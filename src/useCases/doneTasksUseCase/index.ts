@@ -1,27 +1,15 @@
+import { updateTaskDone } from "../../stores/taskStore/taskEvents";
 import { TaskStore } from "../../stores/taskStore/taskStore";
 
 const execute = async (taskId: string): Promise<void> => {
   const { tasks } = TaskStore.getState();
 
-  const indexOfTask = tasks.findIndex((tasks) => tasks.taskId === taskId);
-  const taskSelected = tasks.filter((tasks) => tasks.taskId === taskId)[0];
+  const taskSelected = tasks.find((tasks) => tasks.taskId === taskId);
 
   try {
-    if (taskSelected.isTaskDone === false) {
-      console.log("o isTaskDone está false");
-      const updateTaskStatus = [...tasks];
-      updateTaskStatus[indexOfTask] = {
-        ...updateTaskStatus[indexOfTask],
-        isTaskDone: true,
-      };
-    }
-    if (taskSelected.isTaskDone === true) {
-      console.log("o isTaskDone está true");
-      const updateTaskStatus = [...tasks];
-      updateTaskStatus[indexOfTask] = {
-        ...updateTaskStatus[indexOfTask],
-        isTaskDone: false,
-      };
+    if (taskSelected) {
+      taskSelected.isTaskDone = !taskSelected.isTaskDone;
+      updateTaskDone(tasks);
     }
   } catch (error) {}
 };

@@ -29,7 +29,7 @@ export const Counter = ({ createdTasks }: CounterTasks) => {
           <CreatedCounter>{createdTasks}</CreatedCounter>
         </IndividualContainer>
         <IndividualContainer>
-          <CompletedTaskText>Concluidas</CompletedTaskText>
+          <CompletedTaskText>Tarefas Concluidas</CompletedTaskText>
           <CompletedCounter>
             {doneTasks} de {createdTasks}
           </CompletedCounter>
