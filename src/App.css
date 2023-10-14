@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Roboto:wght@400;700&display=swap");
+
+:root {
+  --font-size: 16px;
+  --font-family: "Inter", sans-serif;
+  --background-color: #222222;
+  --input-color: #363636;
+  --buttom-color: #1a1a1a;
+  --text-color: #808080;
+  --text-buttom-color: #808080;
+  --border-color: #303030;
+  --created-task-color: #ffd231;
+  --completed-task-color: #3ea372;
+  --buttom-enable: #3352c3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: var(--tamanho-fonte);
+  background-color: var(--background-color);
+}
