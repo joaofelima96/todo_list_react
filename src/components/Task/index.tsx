@@ -9,10 +9,8 @@ import {
   TaskTextRisked,
   TrashContainer,
 } from "./styles";
-import { useState } from "react";
-import { useStore } from "effector-react";
-import { TaskStore } from "../../stores/taskStore/taskStore";
 import DoneTaskUseCase from "../../useCases/doneTasksUseCase";
+import DeleteTaskUseCase from "../../useCases/deleteTaskUseCase";
 
 export interface taskInterface {
   taskName: String;
@@ -23,6 +21,10 @@ export interface taskInterface {
 export const Task = ({ taskName, isTaskDone, taskId }: taskInterface) => {
   function changeIconTasks(taskIdSelected: string) {
     DoneTaskUseCase.execute(taskIdSelected);
+  }
+
+  function deleteTask(taskIdSelected: string) {
+    DeleteTaskUseCase.execute(taskIdSelected);
   }
 
   return (
@@ -41,7 +43,7 @@ export const Task = ({ taskName, isTaskDone, taskId }: taskInterface) => {
       ) : (
         <TaskTextRisked>{taskName}</TaskTextRisked>
       )}
-      <TrashContainer>
+      <TrashContainer onClick={() => deleteTask(taskId)}>
         <DeleteForeverOutlinedIcon style={{ fontSize: 25 }} />
       </TrashContainer>
     </Container>

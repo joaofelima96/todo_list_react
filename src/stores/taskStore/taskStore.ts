@@ -5,6 +5,7 @@ import {
   loadTaskDone,
   createNewTaskDone,
   loadTaskFail,
+  deleteTaskDone,
 } from "./taskEvents";
 
 import { TaskInterface } from "./taskState";
@@ -38,6 +39,13 @@ export const TaskStore = createStore<TaskInterface>(initialState)
     hasError: false,
     errorMessage: "",
     tasks: [data, ...state.tasks],
+  }))
+  .on(deleteTaskDone, (state, data) => ({
+    ...state,
+    isLoading: false,
+    tasks: data,
+    hasError: false,
+    errorMessage: "",
   }))
   .on(loadTaskFail, (state, data: string) => ({
     ...state,
